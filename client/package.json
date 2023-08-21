@@ -9,6 +9,8 @@
     "axios": "^0.18.0",
     "connected-react-router": "^4.4.1",
     "filesize": "^3.6.1",
+    "formik": "^2.4.2",
+    "jwt-decode": "^3.1.2",
     "lodash": "^4.17.10",
     "material-ui-search-bar": "^1.0.0",
     "moment": "^2.22.2",

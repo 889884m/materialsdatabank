@@ -19,6 +19,8 @@ import Deposit from './components/deposit'
 import Contact from './components/contact';
 import Software from './components/software';
 import Tutorials from './components/tutorials';
+// added temp login page
+import LoginPage from './components/login-page'
 
 import { withStyles } from '@material-ui/core/styles';
 import Aet from './components/tutorials/aet';
@@ -28,7 +30,7 @@ import AetGeneralComponent from './components/tutorials/aetGeneral';
 import VisualizingComponent from './components/tutorials/visualizing';
 import ReferencesComponent from './components/tutorials/references';
 import MyDataSetsComponent from './containers/my-datasets';
-import PrivateRoute from './containers/private-route';
+// import PrivateRoute from './containers/private-route';
 
 const appStyles = theme => ({
   root: {
@@ -113,13 +115,17 @@ class App extends Component {
               <div className={classes.content}>
                 <Switch>
                   <Route exact path='/' component={Welcome}/>
-                  <PrivateRoute exact path='/my-datasets' component={MyDataSetsComponent}/>
+                  {/* Change back to PrivateRoute for non-logged in */}
+
+                  <Route exact path='/my-datasets' component={MyDataSetsComponent}/>
                   <Route exact path='/dataset/:id' component={DatasetContainer}/>
                   <Route exact path='/dataset/:id/:action(edit)' component={Deposit}/>
                   <Route exact path='/welcome' component={Welcome}/>
                   <Route exact path='/search' component={Search}/>
                   <Route exact path='/results' component={SearchResults}/>
-                  <PrivateRoute exact path='/:action(deposit)' component={Deposit}/>
+                   {/* Change back to PrivateRoute for non-logged in */}
+
+                  <Route exact path='/:action(deposit)' component={Deposit}/>
                   <Route exact path='/contact' component={Contact}/>
                   <Route exact path='/software' component={Software}/>
                   <Route exact path='/tutorials/aet-general' component={AetGeneralComponent}/>
@@ -129,6 +135,9 @@ class App extends Component {
                   <Route exact path='/tutorials' component={Tutorials}/>
                   <Route exact path='/download' component={Download}/>
                   <Route exact path='/validation' component={Validation}/>
+
+                  {/* added path for login */}
+                  <Route exact path='/login' component={LoginPage}/>
                 </Switch>
               </div>
               <div className={classes.footer}>

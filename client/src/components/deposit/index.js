@@ -117,13 +117,13 @@ class Deposit extends Component {
           <Typography  color="inherit" gutterBottom variant="display1">
             {create ? 'Deposit a new structure' : 'Edit structure'}
           </Typography>
-          { !this.props.isLoggedIn &&
+          { this.props.isLoggedIn &&
           <Typography variant="subheading" color="error">
             You need to login before depositing a new material structure.
           </Typography>
           }
         </PageHead>
-        { this.props.isLoggedIn &&
+        { !this.props.isLoggedIn &&
         <PageBody>
           <Card>
             <form onSubmit={handleSubmit(this.deposit)}>

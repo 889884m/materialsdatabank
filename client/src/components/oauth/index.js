@@ -11,6 +11,10 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 
 import google from './google.svg';
+// import { GoogleLogin } from 'react-google-login';
+// import Login from '../login';
+// import Logout from '../logout';
+
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 
@@ -81,7 +85,7 @@ class SelectLoginProvider extends Component {
   handleGoogle = () => {
     this.props.dispatch(selectAuthProvider(false))
     this.props.dispatch(authenticate(this.props.token))
-    this.props.dispatch(setAuthProvider('Google'))
+    this.props.dispatch(setAuthProvider('GitHub'))
   }
 
   handleGitHub = () => {
@@ -110,12 +114,13 @@ class SelectLoginProvider extends Component {
       >
         <DialogTitle id="login-dialog-title">Login Provider</DialogTitle>
         <List>
-          <ListItem key='google' button onClick={this.handleGoogle}>
+          {/* <Login/> */}
+          {/* <ListItem key='google' button onClick={this.handleGoogle}>
             <ListItemText primary="Sign in with Google" />
             <ListItemIcon>
               <img className='mdb-google' src={google} alt="google" />
             </ListItemIcon>
-          </ListItem>
+          </ListItem> */}
           {/*
           <ListItem  key='github' button onClick={this.handleGitHub}>
             <ListItemText primary="Sign in with GitHub" />
