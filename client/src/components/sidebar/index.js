@@ -46,7 +46,7 @@ class SideBar extends Component {
           <HomeIcon color="primary" />&nbsp;
           <Typography color="inherit" variant="subheading">Welcome</Typography>
         </MenuItem>
-        {/* { me &&
+        { me &&
         <MenuItem
           style={style.menu}
           onClick={() => this.pushRoute('/my-datasets')}
@@ -54,16 +54,8 @@ class SideBar extends Component {
           <InboxIcon color="primary" />&nbsp;
           <Typography color="inherit" variant="subheading">My Datasets</Typography>
         </MenuItem>
-        } */}
-
-        <MenuItem
-          style={style.menu}
-          onClick={() => this.pushRoute('/my-datasets')}
-        >
-          <InboxIcon color="primary" />&nbsp;
-          <Typography color="inherit" variant="subheading">My Datasets</Typography>
-        </MenuItem>
-        {/* { me &&
+        }
+        { me &&
         <MenuItem
           style={style.menu}
           onClick={() => this.pushRoute('/deposit')}
@@ -71,14 +63,7 @@ class SideBar extends Component {
           <OpenInBrowserIcon color="primary" />&nbsp;
           <Typography color="inherit" variant="subheading">Deposit</Typography>
         </MenuItem>
-        } */}
-        <MenuItem
-          style={style.menu}
-          onClick={() => this.pushRoute('/deposit')}
-        >
-          <OpenInBrowserIcon color="primary" />&nbsp;
-          <Typography color="inherit" variant="subheading">Deposit</Typography>
-        </MenuItem>
+        }
         <MenuItem
           style={style.menu}
           onClick={() => this.pushRoute('/search') }

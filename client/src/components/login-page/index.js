@@ -6,10 +6,16 @@ import jwt_decode from 'jwt-decode';
 import selectors from '../../redux/selectors';
 import { connect } from 'react-redux'
 import { isNull } from 'lodash';
+import { setMe, setAuthenticating } from '../../redux/ducks/girder';
+
 
 // import axios from 'axios';
 
-const clientId = '725707155116-9cdhr3d9clqr6ah0tefdvgjsbvmklp30.apps.googleusercontent.com';
+// clientId for materialsdatabank
+// const clientId = '725707155116-9cdhr3d9clqr6ah0tefdvgjsbvmklp30.apps.googleusercontent.com';
+
+// clientId for TestLogin
+const clientId = '863301348573-f8ms311qgcltu5b3e7kah2rkk4hhpses.apps.googleusercontent.com';
 
 // const onSuccess = (res) => {
 //     console.log('[Login Success] currentUser:', res.profileObj);
@@ -29,13 +35,18 @@ class LoginPage extends Component {
 
     constructor(props) {
         super(props);
+        
         this.state = {
+            token: null,
+            authenticating: true,
+            oauth: {
+              providers: {}
+            },
             me: null
-        }
-        this.me = null;
+          };
     }
     Login() {
-        const { me } = this.props;
+        const { me, dispatch } = this.props;
         // const [ user, setUser ] = useState({});
     
         function handleCallbackResponse(response) {
@@ -43,12 +54,14 @@ class LoginPage extends Component {
     
             var userObject = jwt_decode(response.credential)
             // console.log(userObject)
-            this.me = userObject;
+            dispatch(setMe(userObject));
+            dispatch(setAuthenticating(true));
             document.getElementById("signInDiv").hidden = true;
         }
     
         function handleSignOut(event){
-            this.me = null;
+            dispatch(setMe(null));
+            dispatch(setAuthenticating(false));
             document.getElementById("signInDiv").hidden = false;
         }
     
@@ -81,18 +94,17 @@ class LoginPage extends Component {
                     {componentLogin()}
                     {componentButton()}
                     {componentPrompt()}
-                    {console.log(this.me)}
-                    { isNull(this.me) == false &&
+                    {console.log(me)}
+                    { isNull(me) == false &&
                     <button onClick={ (e) => handleSignOut(e)}>Sign Out</button>
                     }
         
-                    { this.me &&
+                    { me &&
                         <div>
-                            <img src={this.me.picture}></img>
-                            <h3>{this.me.name}</h3>
+                            <img src={me.picture}></img>
+                            <h3>{me.name}</h3>
                         </div>
                     }
-                    {this.me = me}
             </div>
         );
     }
@@ -101,8 +113,8 @@ class LoginPage extends Component {
 
         return (
             <div>
-                {/* {this.Login()} */}
-                <Login/>
+                {this.Login()}
+                {/* <Login/> */}
             </div>
         )
     }
