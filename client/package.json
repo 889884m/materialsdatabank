@@ -10,6 +10,7 @@
     "connected-react-router": "^4.4.1",
     "filesize": "^3.6.1",
     "formik": "^2.4.2",
+    "jwt-decode": "^3.1.2",
     "lodash": "^4.17.10",
     "material-ui-search-bar": "^1.0.0",
     "moment": "^2.22.2",
@@ -33,16 +34,5 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
   }
 }

@@ -98,7 +98,8 @@ class Deposit extends Component {
       if (_.has(err, 'response.data.message')) {
         throw new SubmissionError({_error: err.response.data.message});
       } else {
-        throw new SubmissionError({_error: 'An error has occurred while uploading the dataset'});
+        // change back
+        // throw new SubmissionError({_error: 'An error has occurred while uploading the dataset'});
       }
     });
     return depositPromise;
@@ -117,13 +118,14 @@ class Deposit extends Component {
           <Typography  color="inherit" gutterBottom variant="display1">
             {create ? 'Deposit a new structure' : 'Edit structure'}
           </Typography>
-          { !this.props.isLoggedIn &&
+          { this.props.isLoggedIn &&
           <Typography variant="subheading" color="error">
             You need to login before depositing a new material structure.
           </Typography>
           }
         </PageHead>
-        { this.props.isLoggedIn &&
+        {/* !this.props.isLoggedIn && change back */}
+
         <PageBody>
           <Card>
             <form onSubmit={handleSubmit(this.deposit)}>
@@ -172,7 +174,7 @@ class Deposit extends Component {
             </form>
           </Card>
         </PageBody>
-        }
+        {/* } */}
       </div>
     );
   }
